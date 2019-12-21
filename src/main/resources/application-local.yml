@@ -1,6 +1,6 @@
 resttemplate:
   logging:
-    should-include-payload: true
-    masking-keywords: # for demonstration
-      - keyword: set-cookie
-        length-retaining-original-string: 2
+    should-include-payload: true # request/responseのpayloadを出力する
+    masking-headers: # この設定はrequest/responseで共通
+      - name: set-cookie # デモのため、set-cookieを秘匿する。
+        length-retaining-original-string: 2 # 秘匿時に前後2文字はオリジナルの文字列をを残す

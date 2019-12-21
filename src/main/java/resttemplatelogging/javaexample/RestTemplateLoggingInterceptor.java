@@ -115,7 +115,7 @@ public class RestTemplateLoggingInterceptor implements ClientHttpRequestIntercep
 
     private boolean shouldMask(String headerName) {
         // 秘匿対象と設定されたheaderかどうかチェックする
-        return restTemplateProperties.getMaskingKeywords()
+        return restTemplateProperties.getMaskingHeaders()
                                      .stream()
                                      .anyMatch(headerNeededToBeMasked -> headerNeededToBeMasked.isSameWith(headerName));
     }

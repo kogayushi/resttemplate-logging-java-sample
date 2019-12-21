@@ -1,7 +1,7 @@
 spring:
   profiles:
-    active: local
+    active: local # profile指定なしの場合、local profileで起動する。このサンプルとは無関係な設定。
 
 resttemplate:
   logging:
-    should-include-payload: false
+    should-include-payload: false # 特定環境以外ではrequest/responseのpayloadを出力したくないのでデフォルトでfalseにしておく
