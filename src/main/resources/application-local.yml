@@ -1,0 +1,6 @@
+resttemplate:
+  logging:
+    should-include-payload: true
+    masking-keywords: # for demonstration
+      - keyword: set-cookie
+        length-retaining-original-string: 2
