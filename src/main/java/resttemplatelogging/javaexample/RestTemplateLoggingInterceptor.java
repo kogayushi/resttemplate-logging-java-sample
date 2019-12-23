@@ -44,12 +44,16 @@ public class RestTemplateLoggingInterceptor implements ClientHttpRequestIntercep
 
     private void logRequest(HttpRequest request, byte[] body) {
         Map<String, List<String>> maskedHeader = maskedHeaders(request.getHeaders()); // header情報の一部を秘匿する
-        String responseBody = new String(body, StandardCharsets.UTF_8);
+        String responseBody = buildRequestBody(body);
         log.info("[API:Request] Request=[{}:{}], Headers=[{}], Body=[{}]",
                  request.getMethod(),
                  request.getURI(),
                  maskedHeader,
                  responseBody);
+    }
+
+    private String buildRequestBody(byte[] body) {
+        return restTemplateProperties.shouldIncludePayload() ? new String(body, StandardCharsets.UTF_8) : "omitted request body";
     }
 
     // BufferingClientHttpResponseWrapperが渡された場合、payloadを出力すると判断する。分岐をオーバーロードで表現している。
